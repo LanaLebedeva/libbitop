@@ -32,13 +32,13 @@ gcc (Ubuntu 9.2.1-9ubuntu2) 9.2.1 20191008
 	make re		- clean all and builds a static library
 
 ## ABOUT FUNCTION
-	- [X] size_t	checkbit(const int value, const int position)
+	size_t	checkbit(const int value, const int position)
 
-	- [X] int	setbit(const int value, const int position);
+	int	setbit(const int value, const int position)
 
-	- [X] int	unsetbit(const int value, const int position);
+	int	unsetbit(const int value, const int position)
 
-	- [X] int	switchbit(const int value, const int position);
+	int	switchbit(const int value, const int position)
 
 	
 **position**  must be greater than **0** and less than sizeof(int)*CHAR_BIT
