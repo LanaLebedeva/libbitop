@@ -1,24 +1,35 @@
-NAME = libbitop.a
+NAME 		= libbitop.a
 
-HEADER = ./libbitop.h
+DIR 		= ./
 
-FUNCTIONS = checkbit.c setbit.c unsetbit.c switchbit.c
+HEADER 		= ./libbitop.h
 
-CC = gcc -Wall -Wextra -Werror
+HEADER_DIR	= ./
 
-OBJECTS = ${FUNCTIONS:.c=.o}
+FUNCTIONS 	= checkbit.c\
+		  setbit.c\
+		  unsetbit.c\
+		  switchbit.c
 
-all: $(NAME)
+SOURCE		= $(addprefix $(DIR), $(FUNCTIONS))
+
+OBJECTS		= $(SOURCE:.c=.o)
+
+FLAGS		?= -Wall -Wextra -Werror
+
+all: $(OBJECTS) $(NAME)
 
 %.o: %.c $(HEADER)
-	$(CC) -c $< -o ${<:.c=.o} -I ./
+	gcc $(FLAGS) -c $< -o $@ -I $(HEADER_DIR) -MD
+
+-include  *.d
 
 $(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
+	ar rc $(NAME) $(OBJECTS) $?
 	ranlib $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJECTS) *.d
 
 fclean: clean
 	rm -f $(NAME)
