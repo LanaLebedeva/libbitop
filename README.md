@@ -41,4 +41,5 @@ gcc (Ubuntu 9.2.1-9ubuntu2) 9.2.1 20191008
 	int	switchbit(const int value, const int position)
 
 	
-**position**  must be greater than **0** and less than sizeof(int)*CHAR_BIT
+position  **must be greater than** 0 and **less than** sizeof(int)*CHAR_BIT. 
+	If  the  value  of  **position**  is  negative  orisgreater than or equal to the width of the **value**, the behavior is undefined
